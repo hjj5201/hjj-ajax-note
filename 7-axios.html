@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>用axios 发送AJAX请求</title>
+    <script src="https://cdn.bootcdn.net/ajax/libs/axios/1.7.2/axios.js"></script>
+</head>
+<body>
+    <button>GET</button>
+    <button>POST</button>
+    <button>AJAX</button>
+    <script>
+        const btns = document.querySelectorAll('button')
+        // 配置baseURL  用来简写网页的
+        axios.defaults.baseURL = 'http://127.0.0.1:8000'
+        btns[0].addEventListener('click',function(){
+            // GET请求
+            axios.get('/axios-server',{
+                // url 参数
+                params :{
+                    id:100,
+                    vip:7
+                },
+                // 请求头信息
+                headers :{
+                    name:'atguigu',
+                    age:20
+                }
+            })
+        })
+        btns[2].addEventListener('click',function(){
+            axios({
+                //请求方法
+              
+                // url
+                url:'/axios-server',
+                //url参数
+                params:{
+                    vip:10,
+                    level:30
+                },
+                // 头信息
+                header:{
+                    a:100,
+                    b:200
+                },
+                // 请求体参数
+                data:{
+                    username:'admin',
+                    password:'admin'
+                }
+
+            })
+        })
+    </script>
+</body>
+</html>
